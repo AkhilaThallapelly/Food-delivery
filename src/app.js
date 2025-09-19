@@ -6,7 +6,8 @@ import Body from "./components/Body";
 import Aboutus from "./components/Aboutus";
 import Contactus from "./components/Contactus";
 import Error from "./components/Error"; 
-import { createBrowserRouter,RouterProvider } from "react-router-dom";
+import Resmenu from "./components/Resmenu";
+import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 
 
 
@@ -17,7 +18,7 @@ function App() {
                 <Heading />
             </div>
             <div className="body">
-                <Body />
+                <Outlet />
             </div>
         </div>
     );
@@ -26,16 +27,27 @@ const config=createBrowserRouter([
     {
         path:"/",
         element:<App/>,
-        errorElement:<Error/>
-    },
-    {
+        children:[
+            {
+                path:"/",
+                element:<Body/>
+            },
+            {
         path:"/about",
         element:<Aboutus/>
     },
     {
         path:"/contact",
         element:<Contactus/>
+    },
+    {
+        path:"/restaurant/:resid",
+        element:<Resmenu/>
     }
+    ],
+        errorElement:<Error/>
+    },
+    
     
 ])
 const root=ReactDOM.createRoot(document.getElementsByClassName("root")[0]);

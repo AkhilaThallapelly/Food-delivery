@@ -1,7 +1,9 @@
 import Restaurantcard from "./Restaurantcard";
 // import reslist from "../utils/mockdata";
 import Shimmer from "./shimmer";
+import { Link } from "react-router-dom";
 import {useState,useEffect} from "react";
+
 const Body=()=>{
     const [lstreslist,setlstresList]=useState([]);
     const [filteredres,setfilteredres]=useState([]);
@@ -46,8 +48,9 @@ const Body=()=>{
                 }}>Top restaurants</button>
             </div>
             <div className="res-con">
+
                 {filteredres.map((li)=>{
-                    return <Restaurantcard key={li.info.id} resdata={li.info}/>
+                    return <Link   key={li.info.id} to={"/restaurant/"+li.info.id}><Restaurantcard resdata={li.info}/></Link>
                 })}
                 {/* <Restaurantcard resdata={reslist[0]?.info}/> */}
                 {/* <Restaurantcard key={li.info.id} {...li.info} */}

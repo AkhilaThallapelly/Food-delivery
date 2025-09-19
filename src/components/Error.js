@@ -1,5 +1,5 @@
 import { useRouteError } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 export default function ErrorPage() {
   const error = useRouteError();
   console.error(error);
@@ -11,7 +11,7 @@ export default function ErrorPage() {
       <p style={styles.message}>
         {error?.statusText || error?.message || "Unexpected error occurred."}
       </p>
-      <a href="/" style={styles.button}>Go Back Home</a>
+      <Link to="/" style={styles.button}>Go Back Home</Link>
     </div>
   );
 }
