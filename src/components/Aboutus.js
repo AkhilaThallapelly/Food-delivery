@@ -1,4 +1,3 @@
-import React from "react";
 
 const AboutUs = () => {
   return (
@@ -29,6 +28,7 @@ const AboutUs = () => {
         Thank you for choosing <strong>FoodieExpress</strong>. We’re here to
         serve you with love and flavor ❤️
       </p>
+      
     </div>
   );
 };

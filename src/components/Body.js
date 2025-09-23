@@ -3,11 +3,12 @@ import Restaurantcard from "./Restaurantcard";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import {useState,useEffect} from "react";
-
+import useStatuschecker from "../utils/useStatuschecker";
 const Body=()=>{
     const [lstreslist,setlstresList]=useState([]);
     const [filteredres,setfilteredres]=useState([]);
     const [searchText,setsearchText]=useState("");
+    const isOnline=useStatuschecker();
     useEffect(()=>{
         fetchData();
     },[]);
@@ -23,6 +24,21 @@ const Body=()=>{
     if(lstreslist.length===0){
         return <Shimmer/>
     }
+    if(!isOnline)
+        return(
+    <div style={{ 
+        textAlign: "center", 
+        marginTop: "50px", 
+        color: "red", 
+        fontFamily: "Arial, sans-serif" 
+      }}>
+        <h1>🚨 Oops! You’ve gone offline...</h1>
+        <p>
+          Don’t worry, we’ll reconnect as soon as you’re back online.  
+          Meanwhile, maybe grab a ☕ or take a short break 😌
+        </p>
+      </div>
+    );
     return(
         
         
