@@ -1,98 +1,61 @@
-
-
 const ContactUs = () => {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.heading}>Contact Us</h1>
-      <p style={styles.text}>
+    <div className="max-w-3xl mx-auto px-6 py-10 bg-white shadow-lg rounded-2xl">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        Contact Us
+      </h1>
+
+      <p className="text-gray-600 text-lg mb-8 leading-relaxed text-center">
         Have questions, feedback, or need support? We’d love to hear from you!  
         Reach out to us using the form below or through our contact details.
       </p>
 
-      <form style={styles.form}>
-        <label style={styles.label}>Name</label>
-        <input type="text" placeholder="Enter your name" style={styles.input} />
+      {/* Contact Form */}
+      <form className="flex flex-col space-y-5">
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Name</label>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+          />
+        </div>
 
-        <label style={styles.label}>Email</label>
-        <input type="email" placeholder="Enter your email" style={styles.input} />
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Email</label>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+          />
+        </div>
 
-        <label style={styles.label}>Message</label>
-        <textarea placeholder="Type your message" style={styles.textarea} />
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Message</label>
+          <textarea
+            placeholder="Type your message"
+            rows="4"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+          ></textarea>
+        </div>
 
-        <button type="submit" style={styles.button}>Send Message</button>
+        <button
+          type="submit"
+          className="bg-orange-600 text-white py-2 px-6 rounded-lg hover:bg-orange-700 transition duration-300"
+        >
+          Send Message
+        </button>
       </form>
 
-      <div style={styles.info}>
-        <h2 style={styles.subheading}>Our Office</h2>
-        <p style={styles.text}>📍 Hyderabad, India</p>
-        <p style={styles.text}>📞 +91 98765 43210</p>
-        <p style={styles.text}>✉️ support@foodieexpress.com</p>
+      {/* Contact Info */}
+      <div className="mt-10 text-center">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-3">Our Office</h2>
+        <p className="text-gray-600">📍 Hyderabad, India</p>
+        <p className="text-gray-600">📞 +91 98765 43210</p>
+        <p className="text-gray-600">✉️ support@fooddelivery.com</p>
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    padding: "40px 20px",
-    maxWidth: "800px",
-    margin: "auto",
-    lineHeight: "1.6",
-  },
-  heading: {
-    fontSize: "2.5rem",
-    marginBottom: "20px",
-    textAlign: "center",
-    color: "#e63946",
-  },
-  subheading: {
-    fontSize: "1.5rem",
-    marginTop: "20px",
-    marginBottom: "10px",
-    color: "#1d3557",
-  },
-  text: {
-    fontSize: "1.1rem",
-    marginBottom: "15px",
-    color: "#333",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: "30px",
-  },
-  label: {
-    marginBottom: "5px",
-    fontWeight: "bold",
-  },
-  input: {
-    padding: "10px",
-    marginBottom: "15px",
-    borderRadius: "5px",
-    border: "1px solid #ccc",
-    fontSize: "1rem",
-  },
-  textarea: {
-    padding: "10px",
-    marginBottom: "15px",
-    borderRadius: "5px",
-    border: "1px solid #ccc",
-    fontSize: "1rem",
-    minHeight: "100px",
-  },
-  button: {
-    padding: "12px",
-    border: "none",
-    borderRadius: "5px",
-    backgroundColor: "#e63946",
-    color: "white",
-    fontSize: "1rem",
-    cursor: "pointer",
-  },
-  info: {
-    marginTop: "30px",
-    textAlign: "center",
-  },
 };
 
 export default ContactUs;
