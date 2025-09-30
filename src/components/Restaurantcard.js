@@ -39,7 +39,7 @@ export const withOfferLabel=(Restaurantcard)=>{
   return(resdata)=>{
     return (
       <div className="relative">
-       {resdata?.aggregatedDiscountInfoV3 && (
+       { (
           <span className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 text-xs rounded">
             {resdata.aggregatedDiscountInfoV3.header}{" "}
             {resdata.aggregatedDiscountInfoV3.subHeader}
