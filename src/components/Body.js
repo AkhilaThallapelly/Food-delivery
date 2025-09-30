@@ -1,4 +1,4 @@
-import Restaurantcard from "./Restaurantcard";
+import Restaurantcard,{withOfferLabel} from "./Restaurantcard";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -9,7 +9,7 @@ const Body = () => {
   const [filteredres, setfilteredres] = useState([]);
   const [searchText, setsearchText] = useState("");
   const isOnline = useStatuschecker();
-
+  const Discount=withOfferLabel(Restaurantcard);
   useEffect(() => {
     fetchData();
   }, []);
@@ -82,13 +82,18 @@ const Body = () => {
           ⭐ Top Restaurants
         </button>
       </div>
-
+        
       {/* Restaurants Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {console.log("res",filteredres)}
+        
         {filteredres.map((li) => {
+          console.log(li.info.aggregatedDiscountInfoV3);
           return (
+            
             <Link key={li.info.id} to={"/restaurant/" + li.info.id}>
-              <Restaurantcard resdata={li.info} />
+              {li.info.aggregatedDiscountInfoV3?(<Discount {...li.info}/>):
+              (<Restaurantcard {...li.info} />)}
             </Link>
           );
         })}

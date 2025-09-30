@@ -1,6 +1,6 @@
 import { CDN_URL } from "../utils/constants";
 
-const Restaurantcard = ({ resdata }) => {
+const Restaurantcard = (resdata ) => {
   const { id, name, cuisines, avgRating, cloudinaryImageId } = resdata;
 
   return (
@@ -35,5 +35,20 @@ const Restaurantcard = ({ resdata }) => {
     </div>
   );
 };
+export const withOfferLabel=(Restaurantcard)=>{
+  return(resdata)=>{
+    return (
+      <div className="relative">
+       {resdata?.aggregatedDiscountInfoV3 && (
+          <span className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 text-xs rounded">
+            {resdata.aggregatedDiscountInfoV3.header}{" "}
+            {resdata.aggregatedDiscountInfoV3.subHeader}
+          </span>
+        )}
+         <Restaurantcard {...resdata}/>
+         </div>
+    )
 
+  }
+}
 export default Restaurantcard;
