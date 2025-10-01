@@ -4,7 +4,7 @@ const Restaurantcard = (resdata ) => {
   const { id, name, cuisines, avgRating, cloudinaryImageId } = resdata;
 
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 overflow-hidden">
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transform  overflow-hidden">
       {/* Restaurant Image */}
       <img
         src={CDN_URL + cloudinaryImageId}

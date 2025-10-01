@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { resmenu } from "../utils/constants";
 import Shimmer from "./shimmer";
 import { useParams } from "react-router-dom";
+import Rescategory from "./Rescategory";
 
 
 const Resmenu = () => {
@@ -10,7 +11,7 @@ const Resmenu = () => {
 
   useEffect(() => {
     fetchMenu();
-    // eslint-disable-next-line
+   
   }, []);
 
   const fetchMenu = async () => {
@@ -28,48 +29,39 @@ const Resmenu = () => {
     return <Shimmer />;
   }
 
-  const { name, cuisines, costForTwoMessage } =
-    menu?.cards[2]?.card?.card?.info || {};
+  const {name, cuisines, costForTwoMessage } =menu?.cards[2]?.card?.card?.info;
+  console.log(menu?.cards[2]?.card?.card?.info);
 
   const itemCards =
     menu?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-      ?.itemCards || [];
-
+      ?.itemCards;
+   console.log(menu?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+  const category=menu?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>
+    (c?.card?.card?.['@type']==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+)
+  console.log(category);
   return (
-    <div className="resmenu-container">
-      <div className="resmenu-header">
-        <h1 className="resmenu-title">{name}</h1>
-        <p className="resmenu-cuisines">{cuisines?.join(", ")}</p>
-        <p className="resmenu-cost">{costForTwoMessage}</p>
-      </div>
-
-      <div className="resmenu-items">
-        {itemCards.map((item) => {
-          const info = item.card.info;
-          return (
-            <div className="menu-card" key={info.id}>
-              <div className="menu-info">
-                <h3 className="menu-name">{info.name}</h3>
-                {info.description && (
-                  <p className="menu-desc">{info.description}</p>
-                )}
-                <p className="menu-price">
-                  ₹{(info.price ?? info.defaultPrice) / 100}
-                </p>
-              </div>
-              {info.imageId && (
-                <img
-                  className="menu-img"
-                  src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_200/${info.imageId}`}
-                  alt={info.name}
-                />
-              )}
-            </div>
-          );
-        })}
-      </div>
+  <div className="max-w-3xl mx-auto my-8">
+    {/* Restaurant Header */}
+    <div className="text-center bg-white shadow-lg rounded-2xl p-6">
+      <h1 className="text-3xl font-bold text-gray-800 mb-2">{name}</h1>
+      <p className="text-gray-600 text-lg mb-1">{cuisines?.join(", ")}</p>
+     
     </div>
-  );
+
+    {/* Categories */}
+    <div className="mt-8 space-y-6">
+      {category?.map((c) => (
+        <Rescategory 
+          key={c.card.card.title} 
+          rescat={c.card.card} 
+        />
+      ))}
+    </div>
+  </div>
+);
+
 };
 
 export default Resmenu;
+

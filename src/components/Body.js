@@ -85,10 +85,10 @@ const Body = () => {
         
       {/* Restaurants Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {console.log("res",filteredres)}
+          {/* {console.log("res",filteredres)} */}
         
         {filteredres.map((li) => {
-          console.log(li.info.aggregatedDiscountInfoV3);
+          // console.log(li.info.aggregatedDiscountInfoV3);
           return (
             
             <Link key={li.info.id} to={"/restaurant/" + li.info.id}>
