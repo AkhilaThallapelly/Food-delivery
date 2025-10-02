@@ -5,12 +5,14 @@ const Restaurantcard = (resdata ) => {
 
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transform  overflow-hidden">
-      {/* Restaurant Image */}
-      <img
-        src={CDN_URL + cloudinaryImageId}
-        alt={name}
-        className="w-full h-48 object-cover"
-      />
+  {/* Restaurant Image */}
+  <img
+    src={CDN_URL + cloudinaryImageId}
+    alt={name}
+    className="w-full h-48 object-cover"
+  />
+
+
 
       {/* Restaurant Info */}
       <div className="p-4">
