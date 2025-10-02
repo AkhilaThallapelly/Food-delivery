@@ -8,6 +8,7 @@ import Rescategory from "./Rescategory";
 const Resmenu = () => {
   const [menu, setMenu] = useState(null);
   const { resid } = useParams();
+  const [showidx,setshowidx]=useState(null);
 
   useEffect(() => {
     fetchMenu();
@@ -51,10 +52,12 @@ const Resmenu = () => {
 
     {/* Categories */}
     <div className="mt-8 space-y-6">
-      {category?.map((c) => (
+      {category?.map((c,index) => (
         <Rescategory 
           key={c.card.card.title} 
-          rescat={c.card.card} 
+          rescat={c.card.card}
+          setidx={index==showidx?true:false}
+          setshowidx={()=>setshowidx(prev => prev === index ? null : index)}
         />
       ))}
     </div>
